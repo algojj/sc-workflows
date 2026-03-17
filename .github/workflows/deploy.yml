@@ -20,7 +20,7 @@ env:
 
 jobs:
   build-and-push:
-    runs-on: [self-hosted, prod]
+    runs-on: production
     permissions:
       contents: read
       packages: write
@@ -59,7 +59,7 @@ jobs:
             ${{ env.REGISTRY }}/algojj/${{ inputs.image_name }}:latest
 
   deploy-k3s:
-    runs-on: self-hosted
+    runs-on: production
     needs: build-and-push
     steps:
       - name: Deploy to K3s
